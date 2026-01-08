@@ -1,0 +1,31 @@
+<nav class="navbar" [class.scrolled]="isScrolled">
+  <div class="brand" routerLink="/">ZERO EDITION</div>
+
+  <button class="menu-toggle" (click)="toggleMobileMenu()" [class.open]="isMobileMenuOpen">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+  </button>
+
+  <ul class="nav-links" [class.active]="isMobileMenuOpen">
+    <li>
+      <a
+        routerLink="/"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        (click)="closeMenu()"
+        >Home</a
+      >
+    </li>
+    <li><a routerLink="/services" routerLinkActive="active" (click)="closeMenu()">Services</a></li>
+    <li>
+      <a routerLink="/portfolio" routerLinkActive="active" (click)="closeMenu()">Portfolio</a>
+    </li>
+    <li><a routerLink="/workflow" routerLinkActive="active" (click)="closeMenu()">Workflow</a></li>
+    <li>
+      <a routerLink="/contact" routerLinkActive="active" class="cta" (click)="closeMenu()"
+        >Contact Us</a
+      >
+    </li>
+  </ul>
+</nav>

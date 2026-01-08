@@ -1,0 +1,73 @@
+<section class="contact-section">
+  <div class="contact-container">
+    <div class="contact-info-column">
+      <span class="badge-premium">Contacto</span>
+      <h2 class="display-title">¿ LISTO PARA EL <span class="gold">NIVEL ZERO ?</span></h2>
+      <p class="text-lead">Completa el formulario y nos pondremos en contacto contigo.</p>
+
+      <div class="info-grid">
+        <div class="info-item">
+          <span class="info-icon">✉️</span>
+          <div class="info-text">
+            <span>Correo</span>
+            <strong>lpichardosanchez15@gmail.com</strong>
+          </div>
+        </div>
+        <div class="info-item">
+          <span class="info-icon">📍</span>
+          <div class="info-text">
+            <span>Ubicación</span>
+            <strong>Internacional / Remoto</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form-column">
+      <form [formGroup]="form" (ngSubmit)="submit()" class="zero-form">
+        <h3 class="form-header">INICIAR PROPUESTA</h3>
+
+        <div class="form-grid">
+          <div class="field-group">
+            <label>Nombre</label>
+            <input formControlName="name" placeholder="Tu nombre" />
+          </div>
+          <div class="field-group">
+            <label>Email</label>
+            <input formControlName="email" type="email" placeholder="tu@email.com" />
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label>Empresa</label>
+          <input formControlName="company" placeholder="Nombre de tu negocio" />
+        </div>
+
+        <div class="field-group">
+          <label>Servicio</label>
+          <select formControlName="service">
+            <option value="">Selecciona un servicio</option>
+            <option value="audiovisual">Producción Audiovisual</option>
+            <option value="ads">Publicidad Digital</option>
+            <option value="full">Estrategia Integral</option>
+          </select>
+        </div>
+
+        <div class="field-group">
+          <label>Mensaje</label>
+          <textarea
+            formControlName="message"
+            rows="4"
+            placeholder="¿Cómo podemos ayudarte?"
+          ></textarea>
+        </div>
+
+        <button type="submit" [disabled]="form.invalid || isSending" class="btn-submit-premium">
+          <span class="btn-txt">
+            {{ isSending ? 'ENVIANDO...' : 'ENVIAR FORMULARIO' }}
+          </span>
+        </button>
+      </form>
+    </div>
+  </div>
+</section>

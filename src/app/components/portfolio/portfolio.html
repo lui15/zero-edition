@@ -1,0 +1,64 @@
+<section class="portfolio-section">
+  <div class="portfolio-header">
+    <span class="badge">Nivel Zero</span>
+    <h2>Portfolio <span class="gold">Creative</span></h2>
+  </div>
+
+  <div class="filter-menu">
+    <button (click)="filter('all')" [class.active]="currentFilter === 'all'">Todos</button>
+    <button (click)="filter('photo')" [class.active]="currentFilter === 'photo'">Fotos</button>
+    <button (click)="filter('video')" [class.active]="currentFilter === 'video'">Videos</button>
+    <button (click)="filter('web')" [class.active]="currentFilter === 'web'">Webs</button>
+  </div>
+
+  <div class="gallery">
+    @for (item of filteredProjects; track item.id) {
+    <div class="item fade-in" (click)="openProject(item)">
+      <div class="preview-box">
+        @if (item.category !== 'video') {
+        <img
+          [src]="item.fullPath"
+          class="media-thumb"
+          (error)="handleImageError($event)"
+          alt="Project"
+        />
+        } @if (item.category === 'video') {
+        <div class="video-thumb">
+          <span class="play-icon">▶</span>
+          <p>PLAY VIDEO</p>
+        </div>
+        }
+      </div>
+
+      <div class="item-overlay">
+        <div class="item-content">
+          <span class="category-tag">{{ item.category }}</span>
+          <h3>{{ item.title }}</h3>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+
+  @if (selectedProject) {
+  <div class="lightbox" (click)="closeProject()">
+    <span class="close-x">&times;</span>
+
+    <div class="lightbox-container" (click)="$event.stopPropagation()">
+      @if (selectedProject.category === 'photo') {
+      <img [src]="selectedProject.fullPath" class="full-media" />
+      } @if (selectedProject.category === 'video') {
+      <video controls autoplay class="full-media">
+        <source [src]="selectedProject.fullPath" type="video/mp4" />
+        Tu navegador no soporta video.
+      </video>
+      }
+
+      <div class="caption">
+        <h3>{{ selectedProject.title }}</h3>
+        <p>{{ selectedProject.category }}</p>
+      </div>
+    </div>
+  </div>
+  }
+</section>

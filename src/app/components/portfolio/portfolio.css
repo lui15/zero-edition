@@ -1,0 +1,191 @@
+:root {
+  --primary: #f7af04;
+  --bg-black: #000000;
+}
+
+.portfolio-section {
+  padding: 80px 5%;
+  background: var(--bg-black);
+  color: white;
+  min-height: 100vh;
+  margin-top: 20px;
+}
+
+.portfolio-header {
+  text-align: center;
+  margin-bottom: 50px;
+  h2 {
+    font-size: 3.5rem;
+    font-weight: 900;
+    .gold {
+      color: var(--primary);
+    }
+  }
+  .badge {
+    color: var(--primary);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+  }
+}
+
+.filter-menu {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 50px;
+  flex-wrap: wrap; /* Permite que los botones bajen */
+}
+
+.filter-menu button {
+  background: #111;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #888;
+  padding: 12px 30px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-weight: 600;
+}
+
+.filter-menu button.active {
+  background: var(--primary);
+  color: #000;
+  font-weight: 700;
+  border-color: var(--primary);
+}
+
+/* Lógica para que 'Webs' quede debajo en móviles */
+@media (max-width: 480px) {
+  .filter-menu {
+    gap: 8px;
+  }
+
+  /* Los 3 primeros botones se reparten el ancho de la primera fila */
+  .filter-menu button {
+    flex: 1 1 calc(30% - 10px);
+    padding: 10px 5px;
+    font-size: 0.85rem;
+    text-align: center;
+  }
+
+  /* El último botón (Webs) ocupa el 100% y baja */
+  .filter-menu button:last-child {
+    flex: 1 1 100%;
+    margin-top: 5px;
+  }
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 25px;
+  max-width: 1400px;
+  margin: 0 auto;
+
+  .item {
+    position: relative;
+    height: 420px;
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    background: #080808;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.4s ease;
+
+    &:hover {
+      transform: translateY(-10px);
+      border-color: var(--primary);
+      .media-thumb {
+        transform: scale(1.05);
+      }
+    }
+
+    .preview-box {
+      width: 100%;
+      height: 100%;
+      .media-thumb {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: 0.6s;
+      }
+      .video-thumb {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: #050505;
+        .play-icon {
+          font-size: 3.5rem;
+          color: var(--primary);
+        }
+        p {
+          color: #444;
+          font-size: 0.7rem;
+          margin-top: 10px;
+          letter-spacing: 1px;
+        }
+      }
+    }
+
+    .item-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent 70%);
+      display: flex;
+      align-items: flex-end;
+      padding: 30px;
+      .category-tag {
+        color: var(--primary);
+        font-weight: 800;
+        font-size: 1rem;
+      }
+      h3 {
+        font-size: 1.3rem;
+        margin-top: 5px;
+      }
+    }
+  }
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.98);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(15px);
+
+  .close-x {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 4rem;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  .lightbox-container {
+    width: 90%;
+    max-width: 1100px;
+    text-align: center;
+    .full-media {
+      max-width: 100%;
+      max-height: 80vh;
+      border-radius: 15px;
+      border: 1px solid var(--primary);
+    }
+    .caption {
+      margin-top: 20px;
+      h3 {
+        color: var(--primary);
+        font-size: 1.8rem;
+      }
+    }
+  }
+}

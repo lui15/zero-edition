@@ -1,0 +1,28 @@
+:root {
+  --primary: #f7af04;
+  --bg-dark: #000000;
+  --bg-accent: #0a0a0a;
+  --text-main: #ffffff;
+  --text-muted: rgba(255, 255, 255, 0.7);
+  --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+html {
+  /* Evita que la página salte horizontalmente cuando aparece el scroll */
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+}
+
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
