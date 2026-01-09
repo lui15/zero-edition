@@ -109,8 +109,12 @@
     text-transform: uppercase;
     cursor: pointer;
     transition: var(--transition);
+    display: flex; /* Aseguramos flex en ambos botones */
+    align-items: center; /* Centrado vertical */
+    justify-content: center; /* CENTRADO HORIZONTAL - Corrección clave */
+
     @media (max-width: 480px) {
-      width: 100%;
+      width: 100%; /* Ocupa todo el ancho en móvil */
     }
   }
 
@@ -118,8 +122,6 @@
     background: var(--primary);
     color: #000;
     border: none;
-    display: flex;
-    align-items: center;
     gap: 12px;
     &:hover {
       background: #fff;
@@ -128,6 +130,9 @@
       .arrow {
         transform: translateX(8px);
       }
+    }
+    .arrow {
+      transition: transform 0.3s ease;
     }
   }
 
@@ -144,6 +149,8 @@
   }
 }
 
+/* --- Resto de secciones --- */
+
 .stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -154,7 +161,6 @@
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
   }
-
   .stat-item {
     text-align: center;
     .stat-value {
@@ -173,31 +179,25 @@
 .about {
   padding: 100px 5%;
   background: var(--bg-dark);
-
   .about-container {
     max-width: 1100px;
     margin: 0 auto;
     text-align: center;
-
     .about-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 30px;
       margin-top: 60px;
-
       .about-item {
         background: var(--bg-card);
         padding: 40px;
         border-radius: 20px;
         border: 1px solid rgba(255, 255, 255, 0.05);
-        text-align: center;
         transition: var(--transition);
-
         &:hover {
           border-color: var(--primary);
           transform: translateY(-5px);
         }
-
         .dot {
           margin: 0 auto 20px auto;
           width: 10px;
@@ -224,21 +224,17 @@
   padding: 100px 5%;
   background: #050505;
   text-align: center;
-
   .services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
   }
-
   .service-card {
     position: relative;
     background: var(--bg-card);
     padding: 50px 30px;
     border-radius: 25px;
-    text-align: center;
     transition: var(--transition);
-
     .service-icon {
       font-size: 3rem;
       margin-bottom: 25px;
@@ -253,7 +249,6 @@
       color: var(--text-muted);
       line-height: 1.6;
     }
-
     .service-border {
       position: absolute;
       bottom: 0;
@@ -264,7 +259,6 @@
       transition: all 0.4s ease;
       transform: translateX(-50%);
     }
-
     &:hover {
       transform: translateY(-10px);
       .service-border {
